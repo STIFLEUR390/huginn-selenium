@@ -1,14 +1,14 @@
 # docker-compose.yml
-version: '3.8'
+version: "3.8"
 
 services:
   db:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-uh41i33GvoBRShIQbKFHiDCZ9GzYjaqxDC}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-huginn}
+      MYSQL_USER: ${MYSQL_USER:-huginn}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-j6e7UgrS92cpwqMO1xbzpazu6w2lZiWDEE}
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -22,7 +22,8 @@ services:
       context: ./selenium
       dockerfile: Dockerfile
     environment:
-      PROXY_LIST: ${PROXY_LIST}
+      PROXY_LIST: ${PROXY_LIST:-""}
+      SE_NODE_SESSION_TIMEOUT: ${SE_NODE_SESSION_TIMEOUT:-600}
     ports:
       - "4444:4444"
     shm_size: "2g"
@@ -35,15 +36,15 @@ services:
       - redis
       - selenium
     ports:
-      - "${PORT}:3000"
+      - "${PORT:-3000}:3000"
     environment:
-      APP_SECRET_TOKEN: ${APP_SECRET_TOKEN}
+      APP_SECRET_TOKEN: ${APP_SECRET_TOKEN:-dO9TUIOIHa1GWzougU4CBKbZgeg4PQTg1h}
       DATABASE_ADAPTER: mysql2
-      DATABASE_URL: mysql2://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}
+      DATABASE_URL: mysql2://${MYSQL_USER:-huginn}:${MYSQL_PASSWORD:-j6e7UgrS92cpwqMO1xbzpazu6w2lZiWDEE}@db:3306/${MYSQL_DATABASE:-huginn}
       REDIS_URL: redis://redis:6379/0
       SELENIUM_URL: ${SELENIUM_URL:-http://selenium:4444/wd/hub}
-      DOMAIN: ${DOMAIN}
-      FORCE_SSL: ${FORCE_SSL}
+      DOMAIN: ${DOMAIN:-huginn.applix.nl}
+      FORCE_SSL: ${FORCE_SSL:-true}
     restart: always
 
 volumes:

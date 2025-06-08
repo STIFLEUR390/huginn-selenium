@@ -1,0 +1,51 @@
+{
+  "data": [
+    {
+      "_id": "67c03c3e6b79c1e0b58257cd",
+      "ip": "65.49.68.84",
+      "anonymityLevel": "elite",
+      "asn": "AS6939",
+      "city": "Santaquin",
+      "country": "US",
+      "created_at": "2025-02-27T10:19:42.730Z",
+      "google": false,
+      "isp": "Hurricane Electric LLC",
+      "lastChecked": 1749374045,
+      "latency": 153.347,
+      "org": "Hurricane Electric",
+      "port": "42571",
+      "protocols": ["socks4"],
+      "speed": 5001,
+      "upTime": 41.7525773195876,
+      "upTimeSuccessCount": 324,
+      "upTimeTryCount": 776,
+      "updated_at": "2025-06-08T09:14:05.158Z",
+      "responseTime": 46
+    },
+    {
+      "_id": "681e8aa6af1453cc9a3de075",
+      "ip": "84.239.49.189",
+      "anonymityLevel": "elite",
+      "asn": "AS44679",
+      "city": "Voluntari",
+      "country": "RO",
+      "created_at": "2025-05-09T23:07:18.273Z",
+      "google": false,
+      "isp": "INVITE Systems SRL",
+      "lastChecked": 1749372917,
+      "latency": 32.879,
+      "org": "INVITE Systems SRL",
+      "port": "9002",
+      "protocols": ["socks4"],
+      "speed": 1,
+      "upTime": 99.1304347826087,
+      "upTimeSuccessCount": 228,
+      "upTimeTryCount": 230,
+      "updated_at": "2025-06-08T08:55:17.247Z",
+      "responseTime": 3517
+    }
+  ],
+  "total": 8004,
+  "page": 1,
+  "limit": 500
+}
