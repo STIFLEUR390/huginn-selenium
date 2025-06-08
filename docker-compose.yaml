@@ -21,6 +21,8 @@ services:
     build:
       context: ./selenium
       dockerfile: Dockerfile
+    environment:
+      PROXY_LIST: ${PROXY_LIST}
     ports:
       - "4444:4444"
     shm_size: "2g"
