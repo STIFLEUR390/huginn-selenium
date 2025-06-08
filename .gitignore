@@ -1,0 +1,44 @@
+# Fichiers d'environnement et secrets
+.env
+
+# Fichiers temporaires
+*.tmp
+*.temp
+temp/
+
+# Fichiers de proxy
+proxy.json
+
+# Logs
+*.log
+logs/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers Docker
+.docker/
+
+# Dépendances et packages
+node_modules/
+vendor/
+
+# Fichiers de build
+build/
+dist/
+
+# Fichiers de cache
+.cache/
+*.cache
+
+# Fichiers d'IDE et éditeurs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Fichiers de sauvegarde
+*~
+*.bak
+*.backup
