@@ -1,0 +1,50 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+  redis:
+    image: redis:6-alpine
+    restart: always
+
+  selenium:
+    build:
+      context: ./selenium
+      dockerfile: Dockerfile
+    environment:
+      PROXY_LIST: ${PROXY_LIST}
+    ports:
+      - "4444:4444"
+    shm_size: "2g"
+    restart: always
+
+  app:
+    image: huginn/huginn
+    depends_on:
+      - db
+      - redis
+      - selenium
+    ports:
+      - "${PORT}:3000"
+    environment:
+      APP_SECRET_TOKEN: ${APP_SECRET_TOKEN}
+      DATABASE_ADAPTER: mysql2
+      DATABASE_URL: mysql2://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}
+      REDIS_URL: redis://redis:6379/0
+      SELENIUM_URL: http://selenium:4444/wd/hub
+      DOMAIN: ${DOMAIN}
+      FORCE_SSL: ${FORCE_SSL}
+    restart: always
+
+volumes:
+  db_data:
